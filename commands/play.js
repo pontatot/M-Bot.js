@@ -31,7 +31,6 @@ module.exports = {
 		const ressource = createAudioResource(ytdl(url, { filter: 'audioonly' }));
 		connection.subscribe(player);
 		player.play(ressource);
-		
 		player.on(AudioPlayerStatus.Idle, () => { connection.destroy(); });
 		await interaction.reply({ embeds: [new EmbedBuilder().setTitle('Now playing').setDescription('[' + video.player_response.videoDetails.title + '](' + video.videoDetails.video_url + ') in <#' + channel.id + '>').setThumbnail(video.player_response.videoDetails.thumbnail.thumbnails[0].url).setColor('0x76a3f9')] });
 	},
